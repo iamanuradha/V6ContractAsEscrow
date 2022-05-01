@@ -4,6 +4,7 @@ pragma solidity 0.8.13;
 
 import "./Flight.sol";
 import "./BookingContract.sol";
+import "./BookingSystem.sol";
 
 /**
  * @author GreatLearningGroup3
@@ -18,7 +19,7 @@ import "./BookingContract.sol";
  * exact value of the ticket in ethers is expected.
  */
 
-contract BookingServer {
+contract BookingServer is BookingSystem {
 
     Flight flight;
 
@@ -124,14 +125,14 @@ contract BookingServer {
 	
 	function getBookingData(address customer) 
         public view
-        onlyAirlines returns (BookingContract.BookingData memory){
+        onlyAirlines returns (BookingContract.BookingData memory) {
         return bookings[customer].getBookingData();
     }
 
      function confirmBooking(address customer)
         public 
         onlyAirlines
-        inState(State.BookingInitiated){
+        inState(State.BookingInitiated) {
         //check if customer cancelled the ticket or flight status is not cancelled before 24 hours
         require(flightStateUpdated, "Flight status not updated in last 24 hours");
 		
