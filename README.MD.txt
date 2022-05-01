@@ -17,3 +17,7 @@ B. Airling cancels flight
 2. Airline then needs to set this refund value as msg.value and call cancelFlight.
 
 C. Customer cancels booking
+1. Customer initiates booking (contract holds booking ethers)
+2. Customer cancels booking 
+3. Customer checks refund and penalty
+4. Customer confirms cancel booking refund amount gets added to customer account and penalty goes to airline account, booking is set to cancel
