@@ -181,7 +181,7 @@ contract BookingServer {
     function confirmCancelBooking(address customer)
         public 
         payable
-        onlyEscrow(customer)
+        onlyCustomer
         inState(State.CancelInitiated){
 		
         BookingContract.BookingData memory bookingData = bookings[msg.sender].getBookingData();
